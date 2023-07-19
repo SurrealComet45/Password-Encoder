@@ -15,8 +15,19 @@ def encoder(password):
             j -= 10
         string += str(j)
     return string
-
-
+#---------------------------------------------------------------------------------------------------------------
+# Orlando Gonzalez Pollo
+def decoder(encoded_):
+    #set up an empty var that will host the decoded results
+    output = ""
+    for digit in str(encoded_): 
+        if digit.isdigit(): #check if the section on the string is not empty and for every digit 
+            decoding = str((int(digit) - 3) % 10) # substract - 3, where if a digit is 1 will return 8...
+            output += decoding # for every digit decoded add it to the empty var.
+    return print(f"The encoded password is {encoded_}, and the original password is {output}.") 
+#output the econded password output in the first function and the decoded version output by
+#this function
+#---------------------------------------------------------------------------------------------------------------
 def main():
     toggle = 0
     new_password = 0
@@ -32,7 +43,11 @@ def main():
                 print('Your password has been encoded and stored!')
             print()
         elif option == 2:
-            pass
+            #setting up a condition statement to check if there is any new password stored
+            if new_password:
+                pass_decoded = decoder(new_password)
+            else:  #if there is no password stored in-memory
+                print("No previous password saved. Please press one to input your password.")
         elif option == 3:
             toggle = 1
         else:
