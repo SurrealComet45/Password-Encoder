@@ -1,0 +1,44 @@
+def menu():
+    print('Menu')
+    print('-------------')
+    print('1. Encode')
+    print('2. Decode')
+    print('3. Quit')
+    print()
+
+
+def encoder(password):
+    string = ''
+    for i in password:
+        j = int(i) + 3
+        if j >= 10:
+            j -= 10
+        string += str(j)
+    return string
+
+
+def main():
+    toggle = 0
+    new_password = 0
+    while toggle == 0:
+        menu()
+        option = int(input('Please Select an option: '))
+        if option == 1:
+            password = input("Please enter your password to encode: ")
+            if len(password) > 8 or len(password) < 8:
+                print('Please only enter 8-digits!')
+            else:
+                new_password = encoder(password)
+                print('Your password has been encoded and stored!')
+            print()
+        elif option == 2:
+            pass
+        elif option == 3:
+            toggle = 1
+        else:
+            print('Error! Please enter a number 1 through 3!')
+            print()
+
+
+if __name__ == '__main__':
+    main()
